@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JoSAA</title>
+    <link rel="icon" href="/WebInfo/Content/img/favicon.ico" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/1040a75a8e.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: "Open Sans", sans-serif;
+      }
+
+      .topnav {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        align-items: center;
+        background-color: rgb(224, 224, 224, 0.4);
+        border-top: 5px solid rgb(77, 10, 10);
+        height: 37px;
+        padding: 0;
+      }
+      .topnav-links ul {
+        list-style-type: none;
+        overflow: hidden;
+        padding-left: 0;
+      }
+      .topnav-links li {
+        float: left;
+        border-right: 1px solid rgb(153, 144, 144);
+        display: block;
+        padding: 5px;
+      }
+
+      .topnav-links a {
+        padding: 1px 5px;
+        display: block;
+        text-decoration: none;
+        font-size: 11px;
+        font-weight: 600;
+        color: black;
+        text-align: left;
+      }
+
+      .topnav-input {
+        flex: 1;
+        text-align: right;
+        padding: 1px 12px;
+        display: inline-block;
+      }
+
+      .topnav-input li {
+        display: inline-block;
+        border-right: 1px solid rgb(150, 149, 149);
+        padding: 1px 5px;
+        font-size: 11px;
+        font-weight: 600;
+      }
+      .topnav-input select {
+        font-size: 12px;
+      }
+
+      .header h1,
+      h3 {
+        text-align: center;
+        color: rgb(77, 10, 10);
+      }
+      .header h1 {
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 2px;
+        padding-top: 8px;
+      }
+      .header h3 {
+        font-size: 18px;
+        color: black;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+
+      .main-nav ul {
+        background-color: rgb(77, 10, 10);
+        overflow: hidden;
+        list-style-type: none;
+        padding: 0;
+      }
+      .main-nav li {
+        display: block;
+        float: left;
+        border-right: 1px solid white;
+        padding: 8px 4px;
+      }
+
+      .main-nav a {
+        color: white;
+        text-decoration: none;
+        padding: 12px 10px;
+        font-size: 14px;
+      }
+      #fademessage {
+        color: rgb(214, 212, 212, 0.6);
+        font-weight: 400;
+        font-size: 15px;
+      }
+
+      .row {
+        display: flex;
+        justify-content: space-evenly;
+        text-align: left;
+        padding: 0;
+        margin-top: -1.5%;
+      }
+
+      .column1 {
+        width: 25%;
+        margin: 0 1%;
+      }
+      .column1 .first-list ul {
+        list-style-type: none;
+        background-color: rgb(70, 68, 68);
+        width: 100%;
+        border: 1px solid black;
+        padding: 0;
+        margin-top: 0;
+      }
+      .column1 .first-list li {
+        display: block;
+        border-bottom: 0.3px solid rgb(201, 195, 195, 0.4);
+        padding: 8px 8px;
+        color: white;
+        font-size: 12.7px;
+      }
+      .column1 .first-list li:first-child {
+        background-color: rgb(77, 10, 10);
+        font-size: 20px;
+        padding: 10px 8px;
+      }
+
+      .column1 .add-link ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+      }
+
+      .column1 .add-link li {
+        font-size: 15px;
+        display: block;
+        background-color: rgb(204, 204, 204, 0.4);
+        margin: 4px 0;
+        padding: 5px;
+        font-size: 14px;
+      }
+      .column1 .add-link li:first-child {
+        font-size: 16px;
+        font-weight: 500;
+        border-bottom: 4px solid rgb(77, 10, 10);
+      }
+      .column1 .add-link li:nth-child(2) {
+        border-left: 6px solid rgb(77, 10, 10);
+      }
+
+      .column2 {
+        width: 54%;
+        padding: 0 5px;
+        font-size: 13px;
+        color: rgb(26, 25, 25.9);
+        margin: 0 1%;
+        text-align: justify;
+      }
+      .column2 h2 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 1.5px;
+      }
+      .column2 table {
+        width: 100%;
+      }
+      .column2 table,
+      th,
+      td {
+        border: 0.3px solid rgb(201, 195, 195, 0.8);
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      .column2 th {
+        background-color: rgb(50, 159, 192);
+      }
+      .column2 .para2 {
+        background-color: rgb(243, 242, 242);
+        text-align: center;
+        padding: 5px;
+        margin-top: 2%;
+      }
+      .column2 button {
+        width: 99%;
+        background-color: rgb(77, 10, 10);
+        border: none;
+        margin-left: 0.5%;
+        padding: 12px 0;
+        margin-top: 12px;
+        border-radius: 5px;
+      }
+      .column2 button a {
+        color: white;
+        text-decoration: none;
+        font-size: 15px;
+      }
+
+      .column3 {
+        width: 25%;
+        margin: 0 1%;
+      }
+      .column3 .first-list ul {
+        width: 100%;
+        margin-top: 0;
+        list-style-type: none;
+        border: 1px solid black;
+        border-bottom: 4px solid rgb(29, 26, 26);
+        padding: 0;
+      }
+      .column3 .first-list li {
+        display: block;
+        border-bottom: 0.3px solid rgb(201, 195, 195, 0.9);
+        font-size: 11px;
+        font-weight: 700;
+        padding: 14px 5px;
+      }
+      .column3 .first-list li:first-child {
+        background-color: rgb(29, 26, 26);
+        font-size: 20px;
+        color: white;
+        padding: 10px 5px;
+        font-weight: 400;
+      }
+
+      .column3 .imp-link ul {
+        list-style-type: none;
+        border: 1px solid rgba(206, 205, 205, 0.9);
+        padding: 0;
+        margin: 0;
+        box-shadow: 5px 5px 5px rgb(128, 125, 125);
+      }
+
+      .column3 .imp-link li {
+        display: block;
+        padding: 6px;
+        border-bottom: 1px solid rgba(214, 213, 213, 0.8);
+        font-size: small;
+      }
+
+      .column3 .imp-link li:first-child {
+        background-color: rgba(214, 213, 213, 0.6);
+        font-size: large;
+        font-weight: 550;
+        padding: 8px 3px;
+      }
+
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 15px;
+        font-size: small;
+        font-weight: 560;
+        color: white;
+        background-color: rgb(77, 10, 10);
+      }
+      .footer .para {
+        width: 50%;
+        text-align: center;
+      }
+      .footer b {
+        color: yellow;
+        font-size: 23px;
+      }
+      .logo-bar {
+        background-color: rgba(97, 18, 18, 0.9);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1px 110px;
+        margin-top: 5%;
+      }
+      
+
+      @media screen and (max-width: 990px) 
+      {
+        .column3,
+        .column2,
+        .column1 {
+          width: 45%;
+        }
+        .column3 {
+          margin: 0;
+          padding-left: 0;
+          text-align: left;
+          width: 45%;
+          margin-top: 8%;
+          margin-right: 50%;
+        }
+        .row {
+          flex-wrap: wrap;
+        }
+      }
+       
+      @media screen and (max-width: 765px) 
+      {
+          .row {
+            flex-direction: column;
+          }
+
+
+          .column1,
+          .column2,
+          .column3 {
+            width: 96%;
+            margin: auto;
+          }
+
+
+          .column3,.column2 
+          {
+            margin: auto;
+            margin-top: 3%;
+          }
+          
+          .column1 {
+            margin-top: 3%;
+          }
+          
+          .column2 {
+            margin-top: 5%;
+          }
+
+          #showbar{display: block;
+          background-color: rgb(77, 10, 10);
+          color: white;
+           font-size: 25px;
+          padding: 5px 15px;
+        margin-top: 5%;}
+
+          #navlinks {
+            border-bottom: 1px solid rgb(199, 199, 199, 0.6);
+            border-top: 1px solid black;
+            background-color: rgb(77, 10, 10);
+            z-index: 10;
+            margin: 0;
+           display: block;
+          }
+          #navlinks li {
+            display: block;
+            width: 100%;
+            padding:5pxpx;
+          }
+         
+          .main-nav .fas{
+            display: block;
+            font-size: 25px; 
+            color: white;
+            margin-top: 0;
+            padding: 15px 5px;
+            cursor:pointer;}
+
+           .main-nav .fas{display: block;} 
+        
+      }
+      
+
+         .fas{display: none;}
+      @media screen and (max-width: 765px) {.main-nav .fas{display: block;
+      float: left;}}
+
+      @media screen and (max-width:499px){#skip-content{display:none;}}
+      @media screen and (max-width:441px){.topnav-links a{font-size: 9px;padding:1px 3px;}
+    .header h1{font-size: 19px;}}
+
+    @media screen and (max-width:385px){.topnav-links a{font-size: 9px;padding:1px 3px;}
+  .topnav-input{display: none;}}
+   
+
+  @media screen and (max-width: 765px) {.main-nav ul li a{display: none;}}
+  .nav1 ul li a{display: block;
+  width: 100%;
+text-align: left;}
+
+    </style>
+  </head>
+
+  <body>
+    <div class="topnav">
+      <div class="topnav-links">
+        <ul>
+          <li>
+            <a href="#"
+              >भारत सरकार <br />
+              Government of India
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              राष्ट्रीय सूचना विज्ञान केंद्र <br />
+              National Informatics Centre
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="topnav-input">
+        <ul>
+          <li>
+            Language:
+            <select name="Language" id="">
+              <option value="English">English</option>
+              <option value="Hindi">Hindi</option>
+            </select>
+          </li>
+          <li id="skip-content">skip to main content</li>
+        </ul>
+      </div>
+    </div>
+    <div class="header">
+      <h1>Joint Seat Allocation Authority 2021</h1>
+      <h3>IITs,NITs,IIEST,IIITs and GFTIs for the Academic Year 2021-22</h3>
+    </div>
+   
+    <div class="main-nav">
+      <i class="fas fa-bars" id="showbar" onclick="showmenu()"></i>
+      <div id="navlinks">
+        <ul>
+        <li><a href="#"> Home</a></li>
+        <li><a href="#"> Business Rules</a></li>
+        <li>
+          <a href="#"
+            ><b id="fademessage">Message from Chairmen Desk</b> &nbsp; &nbsp;
+            &nbsp;Certificate formats</a
+          >
+        </li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <img src="Image/josaa-right" alt="" />
+    </div>
+
+    <div class="row">
+      <div class="column1">
+        <div class="first-list">
+          <ul>
+            <li>Current Events</li>
+            <li>Revised counselling schedule (Updated on 19-11-2021)</li>
+            <li>Public Notice for PwD Candidates</li>
+            <li>Details of Pwd verification centers at IITs</li>
+            <li>Details of PwD verification centers at NITs+System</li>
+            <li>Details of Document verification centers at NITs+System</li>
+            <li>Seat Matrix</li>
+            <li>View Participating Institute Profile</li>
+            <li>Restriction at institutes/Academics Program level for IITs</li>
+            <li>
+              Restriction at institutes/Academics Program level in NIT+system
+            </li>
+            <li>VCs and Association pls for NITs +system</li>
+            <li>
+              For NIT+ System:Undertaking for Caste Validity
+              Certificate-Maharashtra
+            </li>
+            <li>
+              IITs to Host Preparatory Course Students in Each Zone for Academic
+              Year 2021-2022
+            </li>
+          </ul>
+        </div>
+        <div class="add-link">
+          <ul>
+            <li>Additional Links</li>
+            <li>Opening and Closing Ranks</li>
+            <li>OR-CR in 2021</li>
+            <li>OR-CR in 2016/2017/2018/2019/2020</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column2">
+        <h2>Introduction</h2>
+        <hr />
+        <p>
+          The Joint Seat Allocation Authority (JoSAA) 2021 has been set up by
+          the Ministry of Education [erstwhile Ministry of Human Resources
+          Development (MHRD)] to manage and regulate the joint seat allocation
+          for admissions to 114 institutes for the academic year 2021-22. This
+          includes 23 IITs, 31 NITs, IIEST Shibpur, 26 IIITs and 33
+          Other-Government Funded Technical Institutes (Other-GFTIs). Admission
+          to all the academic programs offered by these Institutes will be made
+          through a single platform.
+        </p>
+        <table>
+          <thead>
+            <tr>
+              <th>Qualifying Examination</th>
+              <th>Admitting Institutes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>JEE (Advanced) 2021</td>
+              <td>IITs</td>
+            </tr>
+            <tr>
+              <td>JEE (Main) 2021 B.E./B. Tech.</td>
+              <td style="border-bottom: none">
+                NITs,IIEST, IIITs(Triple-I-Ts) and Other-GFTIs
+              </td>
+            </tr>
+            <tr>
+              <td>JEE (Main) 2021 B.Arch</td>
+            </tr>
+            <tr>
+              <td>JEE (Main) 2021 B.planning</td>
+            </tr>
+          </tbody>
+        </table>
+        <section class="para2">
+          <p>
+            Candidates are advised to install "<b>Sandes</b>" mobile app on your
+            smart phone with registered mobile number to get all counselling
+            related OTP, messages and letters.
+          </p>
+        </section>
+        <button><a href="#"> View Seat Allotment Result-Round 6</a></button>
+        <button>
+          <a href="#">
+            Pay Partial Admission Fee for NIT+System(By 23:59 HRS, November
+            24,2021)</a
+          >
+        </button>
+      </div>
+      <div class="column3">
+        <div class="first-list">
+          <ul>
+            <li>News & Events</li>
+            <li>
+              The time of partial Admission fee payment for NIT+payment has been
+              extended up to 23:59 hrs of 24-11-2021.
+            </li>
+            <li>
+              The Partial Admission Fee payment in NIT+system will be activated
+              at 10pm on 20-11-2021
+            </li>
+            <li>
+              CSAB special Rounds Resistration for NIT+system will star from
+              28th NOvemer 2021. for details see the counselling schedule
+              available on https://csab.nic.in
+            </li>
+            <li>
+              For Nit+system: Important INstructions for candidates from Josaa
+              6th round onwars
+            </li>
+            <li>
+              For state of eligibility proof, the alloted canditates may upload
+              class 12 marksheet.
+            </li>
+            <li>
+              Notice:Successful candidates of JEE (Advanced) 2021 are invited to
+              various Open House Events( optional)
+            </li>
+          </ul>
+        </div>
+        <div class="imp-link">
+          <ul>
+            <li>Important Links</li>
+            <li>JEE (Advanced) 2021</li>
+            <li>JEE (Main) 2021</li>
+            <li>CSAB 2021</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="logo-bar">
+      <img src="Images/josaa-logo1.png" alt="" />
+      <img src="Images/josaa-logo2.png" alt="" />
+      <img src="Images/josaa-logo3png.png" alt="" />
+      <img src="Images/josaa-logo4.png" alt="" />
+      <img src="Images/josaa-logo5.png" alt="" />
+    </div>
+    <div class="footer">
+      <div>Version 2.6628</div>
+      <div class="para">
+        This site is designed, developed and hosted by eCounselling Division,
+        NIC and the contents are provided by JoSAA. For any further information,
+        please contact JoSAA at helpjeeadv2021[at]iitkgp[dot]ac[dot]in /
+        csab2021help[at]mnit[dot]ac[dot]in.
+      </div>
+      <div>Visitors: <b>10501568 </b></div>
+    </div>
+
+    <script>
+     
+
+       function showmenu(){
+         var clsbar=document.getElementById("navlinks");
+        
+         clsbar.classList.toggle(nav1);
+        
+       }
+    </script>
+  </body>
+</html>
